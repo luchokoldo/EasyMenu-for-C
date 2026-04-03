@@ -55,7 +55,7 @@ void _menu_add_prev(int page)
         return;
     }
 
-    printf("%d. Volver.\n", _MENU_PREV);
+    printf("%d. %s\n", _MENU_PREV, _MENU_PREV_TEXT);
 }
 
 void _menu_add_next(int valid_data, int page)
@@ -65,12 +65,12 @@ void _menu_add_next(int valid_data, int page)
         return;
     }
 
-    printf("%d. Siguiente.\n", _MENU_NEXT);
+    printf("%d. %s\n", _MENU_NEXT, _MENU_NEXT_TEXT);
 }
 
 void _menu_add_exit(void)
 {
-    printf("\n%d. Salir.\n\n", _MENU_EXIT);
+    printf("\n%d. %s\n\n", _MENU_EXIT, _MENU_EXIT_TEXT);
 }
 
 int _get_options_in_page(int valid_data, int page)

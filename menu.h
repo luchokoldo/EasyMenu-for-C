@@ -10,6 +10,15 @@
 //Aumantar el valor en caso de que necesitas almacenar mas elementos en el menu.
 #define _MAX_MENU_DATA 64
 
+//Texto de la opcion para volver a la pagina anterior.
+#define _MENU_PREV_TEXT "Volver"
+
+//Texto de la opcion para ir a la pagina siguiente.
+#define _MENU_NEXT_TEXT "Siguiente"
+
+//Texto de la opcion para ir salir.
+#define _MENU_EXIT_TEXT "Salir"
+
 /********************* NO MODIFICAR *********************/
 
 #define _MENU_NON_VALID_ID -1
