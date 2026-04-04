@@ -135,7 +135,7 @@ void test16(void)
 }
 void test16_config(int menu_id)
 {
-    char buffer[128];
+    char buffer[_MAX_MENU_TEXT_LEN];
 
     printf("Ingresar texto: ");
 
