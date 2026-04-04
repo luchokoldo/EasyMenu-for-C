@@ -1,14 +1,23 @@
 #ifndef MENU_H_INCLUDED
 #define MENU_H_INCLUDED
 
-//Comentar la linea "#define MENU_AUTO_PAUSE" para evitar que se pause el programa al ejecutar la funcion de la opcion seleccionada en el menu.
+//Comentar la linea "#define MENU_AUTO_PAUSE" para evitar que se pause el programa despues de ejecutar la funcion de la opcion seleccionada en el menu.
 #define MENU_AUTO_PAUSE
+
+//Comentar la linea "#define MENU_AUTO_CLEAN" para evitar que se limpie la pantalla antes de mostrar el menu.
+#define MENU_AUTO_CLEAN
 
 //Aumantar el valor en caso de que necesitas almacenar mas menu.
 #define _MAX_MENU 64
 
 //Aumantar el valor en caso de que necesitas almacenar mas elementos en el menu.
 #define _MAX_MENU_DATA 64
+
+//Aumantar el valor en caso de que necesitas almacenar mas caracteres en el nombre del menu.
+#define _MAX_MENU_NAME_LEN 128
+
+//Aumantar el valor en caso de que necesitas almacenar mas caracteres en el texto de los elementos del menu.
+#define _MAX_MENU_TEXT_LEN 128
 
 //Texto de la opcion para volver a la pagina anterior.
 #define _MENU_PREV_TEXT "Volver"

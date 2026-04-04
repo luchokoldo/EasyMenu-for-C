@@ -11,14 +11,14 @@ const int _MAX_MENU_ITEMS = 7;
 
 typedef struct 
 {
-    char *text;
+    char text[_MAX_MENU_TEXT_LEN];
     FuncPtr func;
 } MenuData;
 
 typedef struct 
 {
     int id;
-    char *name;
+    char name[_MAX_MENU_NAME_LEN];
     MenuData data[_MAX_MENU_DATA];
     int valid_data;
 } Menu;
@@ -126,7 +126,9 @@ int _menu_handler(int menu_index, int page)
 
 int _menu_create(int menu_index, int page)
 {
+    #ifdef MENU_AUTO_CLEAN
     system("cls");
+    #endif
     
     printf("\t%s\n\n", _main_menu[menu_index].name);
     
@@ -166,7 +168,7 @@ int menu_register(char *name)
             id = _main_menu_ids++;
 
             _main_menu[i].id = id;
-            _main_menu[i].name = name;
+            strcpy(_main_menu[i].name, name);
             _main_menu[i].valid_data = 0;
 
             break;
@@ -187,7 +189,7 @@ void menu_add(int menu_id, char *text, FuncPtr func)
         return;
     }
 
-    _main_menu[menu_index].data[_main_menu[menu_index].valid_data].text = text;
+    strcpy(_main_menu[menu_index].data[_main_menu[menu_index].valid_data].text, text);
     _main_menu[menu_index].data[_main_menu[menu_index].valid_data].func = func;
 
     _main_menu[menu_index].valid_data++;
@@ -235,11 +237,23 @@ void menu_destroy(int *menu_id)
     }
 
     _main_menu[menu_index].id = _MENU_NON_VALID_ID;
-    _main_menu[menu_index].name = NULL;
+
+    size_t name_len = strlen(_main_menu[menu_index].name);
+
+    for(size_t i = 0; i < name_len; i++)
+    {
+        _main_menu[menu_index].name[i] = 0;
+    }
 
     for(int i = 0; i < _main_menu[menu_index].valid_data; i++)
     {
-        _main_menu[menu_index].data[i].text = NULL;
+        size_t text_len = strlen(_main_menu[menu_index].data[i].text);
+
+        for(size_t z = 0; z < text_len; z++)
+        {
+            _main_menu[menu_index].data[i].text[z] = 0;
+        }
+
         _main_menu[menu_index].data[i].func = NULL;
     }
 
