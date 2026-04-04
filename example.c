@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "menu.h"
 
 void test1(void);
@@ -17,6 +18,8 @@ void test12(void);
 void test13(void);
 void test14(void);
 void test15(void);
+void test16(void);
+void test16_config(int menu_id);
 
 int main()
 {
@@ -37,6 +40,8 @@ int main()
     menu_add(menu, "Prueba 13", test13);
     menu_add(menu, "Prueba 14", test14);
     menu_add(menu, "Prueba 15", test15);
+
+    test16_config(menu);
 
     int last_page = menu_display(menu, 1);
 
@@ -122,4 +127,26 @@ void test14(void)
 void test15(void)
 {
     printf("Call Test15\n");
+}
+
+void test16(void)
+{
+    printf("Call Test16\n");
+}
+void test16_config(int menu_id)
+{
+    char buffer[128];
+
+    printf("Ingresar texto: ");
+
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+
+        size_t len = strlen(buffer);
+
+        if (len > 0 && buffer[len - 1] == '\n') {
+            buffer[len - 1] = '\0';
+        }
+
+        menu_add(menu_id, buffer, test16);
+    }
 }
